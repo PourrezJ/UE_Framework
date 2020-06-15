@@ -9,23 +9,25 @@ namespace UE_Client
         internal static int Hunger;
         internal static int Thirst;
         internal static double Money;
+        internal static Nui NuiHud;
 
         
         internal static void Init(int hunger, int thirst, double money)
         {
             Logger.Info("Initialisation du HUD");
+
             Hunger = hunger;
             Thirst = thirst;
             Money = money;
             GameMode.RegisterEventHandler("UpdateSurvival", new Action<int, int, double>(UpdateSurvival));
-            
-            var data = new Nui()
+
+            NuiHud = new Nui()
             {
                 UIName = "Hud",
                 Action = "Activate",
-                Data = true
+                Data = new { hunger = Hunger, thirst = Thirst, show = false, money = Money, vocaltype = "Parler", mute = false, vocal = false }
             };
-            data.SendNuiMessage();
+            NuiHud.SendNuiMessage();
         }
 
         private static void UpdateSurvival(int hunger, int thirst, double money)
@@ -39,33 +41,18 @@ namespace UE_Client
         private static bool hide;
         internal static void OnTick()
         {
-
-            if (hide)
-            {
-                new Nui()
-                {
-                    UIName = "Hud",
-                    Action = "Activate",
-                    Data = true
-                }.SendNuiMessage();
-                hide = false;
-            }
+            if (NuiHud == null)
+                return;
 
             if ((DateTime.Now - _lastupdate).TotalMilliseconds < 30)
                 return;
 
             _lastupdate = DateTime.Now;
 
-            if (hide)
-                return;
-
-            var data = new Nui()
-            {
-                UIName = "Hud",
-                Action = "Refresh",
-                Data = new { hunger = Hunger, thirst = Thirst, money = Money, vocaltype = "Parler", mute = false, vocal = false }
-            };
-            data.SendNuiMessage();
+            NuiHud.UIName = "Hud";
+            NuiHud.Action = "Refresh";
+            NuiHud.Data = new { hunger = Hunger, thirst = Thirst, show = !hide, money = Money, vocaltype = "Parler", mute = false, vocal = false };
+            NuiHud.SendNuiMessage();
         }
     }
 }
