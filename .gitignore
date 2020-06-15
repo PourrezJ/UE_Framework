@@ -340,3 +340,5 @@ ASALocalRun/
 healthchecksdb
 /RDResurrection_Client/Colshape/Interfaces
 /RDResurrection_Client/Colshape
+/Client/ESX_Wrapper.cs
+/Server/ESX_Wrapper.cs

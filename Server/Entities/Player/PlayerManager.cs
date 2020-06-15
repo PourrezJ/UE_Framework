@@ -52,12 +52,18 @@ namespace UE_Server.Entities
                 }
 
                 maxClients = API.GetConvarInt("sv_maxclients", 32);
-                whitelist = API.GetConvar("sv_whitelist", "").Split(',');
 
-                if (!whitelist.Contains(source.Identifiers.Where(i => i.Contains("steam")).FirstOrDefault().ToString()))
+                var strWhitelist = API.GetConvar("sv_whitelist", "");
+
+                whitelist = strWhitelist != "" ? strWhitelist.Split(',') : null;
+
+                if (whitelist != null)
                 {
-                    DenyWithReason?.Invoke($"Vous n'êtes pas whitelist. \nPlus d'info sur Discord.gg/resurrectionrp");
-                    API.CancelEvent();
+                    if (!whitelist.Contains(source.Identifiers.Where(i => i.Contains("steam")).FirstOrDefault().ToString()))
+                    {
+                        DenyWithReason?.Invoke($"Vous n'êtes pas whitelist. \nPlus d'info sur Discord.gg/trucmuche");
+                        API.CancelEvent();
+                    }
                 }
 
                 var count = GameMode.PlayersList.Count();
