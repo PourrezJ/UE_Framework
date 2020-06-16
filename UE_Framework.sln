@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{EAA3371D-EFE8-4844-A315-02F5E8EC81FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharCreator", "CharCreator\CharCreator.csproj", "{744FE95A-9685-46D6-868B-38F712975647}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EAA3371D-EFE8-4844-A315-02F5E8EC81FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAA3371D-EFE8-4844-A315-02F5E8EC81FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAA3371D-EFE8-4844-A315-02F5E8EC81FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{744FE95A-9685-46D6-868B-38F712975647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{744FE95A-9685-46D6-868B-38F712975647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{744FE95A-9685-46D6-868B-38F712975647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{744FE95A-9685-46D6-868B-38F712975647}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

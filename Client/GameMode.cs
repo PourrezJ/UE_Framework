@@ -1,7 +1,6 @@
 ﻿using CitizenFX.Core;
 using CitizenFX.Core.Native;
 using UE_Client.Env;
-using UE_Client.Menus;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -30,7 +29,7 @@ namespace UE_Client
         {
             Instance = this;
 
-            Logger.Info("Client Initialise...");
+            UE_Shared.Logger.Info("Client Initialise...");
 
             EventHandlers["onClientResourceStart"] += new Action<string>(OnClientResourceStart);
             EventHandlers["onResourceStop"] += new Action<string>(OnResourceStop);
@@ -92,44 +91,28 @@ namespace UE_Client
         {
             if (firstTick)
             {
-                /*
-                if (Util.LoadScript("startup_sp"))
-                {
-                    Logger.Debug("Script loaded");
-                }*/
-
-                Function.Call(Hash.SET_THIS_SCRIPT_CAN_REMOVE_BLIPS_CREATED_BY_ANY_SCRIPT, true);
-
-                IplLoader.Init();
-                CharCreator.Init();
+                firstTick = false;
+                
+                //IplLoader.Init();
                 RAPI.Init();
                 BlipsManager.Init();
                 MenuManager.Init();
                 ColshapeManager.Init();
-               // Admin.Init();
                 Commands.Init();
                 SessionManager.Init();
                 PedsManager.Init();
-                /*
-                if (SnowActivate)
-                    Function.Call((Hash)0xF02A9C330BBFC5C7, 2);
 
-    */
                 for (int i = 0; i < 16; i++)
                     Function.Call(Hash.ENABLE_DISPATCH_SERVICE, i, true);
-
-                API.SetCreateRandomCops(true);
-                
-                firstTick = false;
             }
+            
+           // Streamer.OnTick();
+           // ColshapeManager.OnTick();
+            //WeatherManager.OnTick();
+            //HUD.OnTick();
+            //Toast.Tick();
 
-            Streamer.OnTick();
-            ColshapeManager.OnTick();
-            WeatherManager.OnTick();
-            HUD.OnTick();
-            Toast.Tick();
-
-            Utils.Misc.ShowControlPressed();          
+            //Utils.Misc.ShowControlPressed();    
             return Task.FromResult(0);
         }
         #endregion
