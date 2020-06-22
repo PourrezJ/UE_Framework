@@ -1,7 +1,7 @@
 ﻿using CitizenFX.Core.Native;
 using Newtonsoft.Json;
 
-namespace UE_Client.Utils
+namespace UE_Client_Extented
 {
     public class Nui
     {

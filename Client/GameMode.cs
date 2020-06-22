@@ -56,18 +56,6 @@ namespace UE_Client
                 blipData.Value.Delete();
             }
 
-            //Remove all blips
-            API.SetThisScriptCanRemoveBlipsCreatedByAnyScript(true);
-            for(int i = 0; i < 5000; i++)
-            {
-                if (Function.Call<bool>(Hash.DOES_BLIP_EXIST, i))
-                {
-                    Logger.Debug($"Blip {i} removed.");
-                    Function.Call(Hash.REMOVE_BLIP, i);
-                }
-            }
-
-
             Debug.WriteLine("onClientResourceStop called!");
         }
 

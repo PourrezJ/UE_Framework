@@ -1,16 +1,15 @@
 ﻿using CitizenFX.Core;
 using CitizenFX.Core.Native;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UE_Client
+namespace UE_Client_Extented
 {
-    internal static class Util
+    public class Utils
     {
-        internal static async Task PerformRequest(int hash)
+        public static async Task PerformRequest(PedHash hash) => await PerformRequest((int)hash);
+
+        public static async Task PerformRequest(int hash)
         {
             if (Function.Call<bool>(Hash.IS_MODEL_IN_CDIMAGE, hash) && Function.Call<bool>(Hash.IS_MODEL_VALID, hash))
             {
@@ -29,10 +28,8 @@ namespace UE_Client
             }
         }
 
-        internal static int GetHashKey(string text)
+        public static int GetHashKey(string text)
         {
-            //return Function.Call<int>(Hash.GET_HASH_KEY, text);
-
             byte[] bytes = Encoding.UTF8.GetBytes(text.ToLowerInvariant());
 
             uint num = 0u;
@@ -49,7 +46,7 @@ namespace UE_Client
             return (int)(num + (num << 15));
         }
 
-        internal static bool LoadScript(string script)
+        public static bool LoadScript(string script)
         {
             if (!Function.Call<bool>(Hash.DOES_SCRIPT_EXIST, script))
                 return false;

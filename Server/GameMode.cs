@@ -9,6 +9,7 @@ using MongoDB.Driver;
 using UE_Server.Entities;
 using UE_Server.Menus;
 using UE_Server.Utils;
+using UE_Shared;
 using UE_Shared.Network;
 
 namespace UE_Server

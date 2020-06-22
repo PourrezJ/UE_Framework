@@ -1,17 +1,17 @@
 ﻿using CitizenFX.Core;
 using CitizenFX.Core.Native;
-using MongoDB.Bson.IO;
 using MongoDB.Driver;
-using UE_Inventory;
 using UE_Server.Controllers;
 using UE_Server.Utils.Extensions;
-using UE_Shared;
-using UE_Shared.Network;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using UE_Shared.Network;
+using UE_Shared;
+using UE_Inventory;
+using MongoDB.Bson.IO;
 
 namespace UE_Server.Entities
 {
@@ -38,7 +38,14 @@ namespace UE_Server.Entities
             GameMode.RegisterEventHandler("UpdateInventory", new Action<Player, string, string>(UpdateInventory));
             GameMode.RegisterEventHandler("playerConnecting", new Action<Player, string, CallbackDelegate>(BeginPlayerConnecting));
 
+            GameMode.RegisterEventHandler("PlayerCreation", new Action<Player, string>(PlayerCreation));
+        }
 
+        private static void PlayerCreation([FromSource]Player player, string data)
+        {
+            PedCharacter charData = Newtonsoft.Json.JsonConvert.DeserializeObject<PedCharacter>(data);
+
+            Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(charData));
         }
 
         internal static void BeginPlayerConnecting([FromSource] Player source, string playerName, CallbackDelegate DenyWithReason)
@@ -120,7 +127,7 @@ namespace UE_Server.Entities
 
         public static async Task LoadPlayer(Player client, string social, bool firstSpawn = false)
         {
-            PlayerData playerData = null;
+            PlayerData playerData = null; 
             try
             {
                 Logger.Info(Newtonsoft.Json.JsonConvert.SerializeObject(client.Identifiers));
@@ -138,6 +145,12 @@ namespace UE_Server.Entities
                 }
                 else
                 {
+                    Logger.Info("Lancement du charcreator pour le joueur " + social);
+                    client.TriggerEvent("OpenCharCreator");
+
+
+                    /*
+                     *  Besoin d'être ajouter après le charcreator
                     Logger.Info("Création du personnage pour: " + social);
 
                     playerData = new PlayerData()
@@ -152,7 +165,7 @@ namespace UE_Server.Entities
                         OutfitInventory = new OutfitInventory()
                     };
                     playerData.Location = FirstSpawnPos[UE_Shared.Utils.RandomNumber(FirstSpawnPos.Length)];
-                    await Database.MongoDB.Insert("players", playerData);
+                    await Database.MongoDB.Insert("players", playerData);*/
                 }
             }
             catch(Exception ex)

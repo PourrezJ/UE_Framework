@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace UE_Server
+namespace UE_Shared
 {
     public static class Config
     {

@@ -81,7 +81,6 @@
     <Compile Include="HUD.cs" />
     <Compile Include="SessionManager.cs" />
     <Compile Include="Streamer.cs" />
-    <Compile Include="Utils\Util.cs" />
     <Compile Include="Utils\Enums\ExplosionTag.cs" />
     <Compile Include="GameMode.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
@@ -90,9 +89,12 @@
     <Compile Include="Utils\Extensions\DictionaryExtensions.cs" />
     <Compile Include="Utils\Extensions\Vector3Extensions.cs" />
     <Compile Include="Utils\Misc.cs" />
-    <Compile Include="Utils\Nui.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Client_Extented\Client_Extented.csproj">
+      <Project>{503b9c4b-99c0-4004-80bb-352f8106b5d6}</Project>
+      <Name>Client_Extented</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{eaa3371d-efe8-4844-a315-02f5e8ec81fa}</Project>
       <Name>Shared</Name>

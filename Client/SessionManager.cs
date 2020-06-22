@@ -22,9 +22,12 @@ namespace UE_Client
 
         private static async void ClientConnected(string playerDataSTR, string worldDataSTR)
         {
-            Logger.Debug("Changement pour MP_Male");
-            await Game.Player.ChangeModel(new Model("MP_Male"));
+            Logger.Debug("Starting client Connect...");
+            
+            await Game.Player.ChangeModel(new Model(CitizenFX.Core.PedHash.FreemodeMale01));
 
+
+            /*
             PlayerData = JsonConvert.DeserializeObject<PlayerData>(playerDataSTR);
             
             WorldData = JsonConvert.DeserializeObject<WorldData>(worldDataSTR);
@@ -42,13 +45,11 @@ namespace UE_Client
 
             GameMode.RegisterTickHandler(OnTick);
 
-
-            Function.Call(Hash.SET_WANTED_LEVEL_MULTIPLIER, 1f);
+            Function.Call(Hash.SET_WANTED_LEVEL_MULTIPLIER, 0f);
             Function.Call(Hash.SET_EVERYONE_IGNORE_PLAYER, Game.Player.Character.Handle, false);
-            Function.Call(Hash.SET_PED_CONFIG_FLAG, Game.Player.Character.Handle, 286, false);
-
+            */
             ClientReady = true;
-            Logger.Info("Client connected...");
+            Logger.Info("End client connected...");
         }
 
         private static int tick;
