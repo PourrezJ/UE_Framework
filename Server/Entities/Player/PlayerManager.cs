@@ -39,6 +39,7 @@ namespace UE_Server.Entities
             GameMode.RegisterEventHandler("playerConnecting", new Action<Player, string, CallbackDelegate>(BeginPlayerConnecting));
 
             GameMode.RegisterEventHandler("PlayerCreation", new Action<Player, string>(PlayerCreation));
+            Logger.Info(Newtonsoft.Json.JsonConvert.SerializeObject(FirstSpawnPos));
         }
 
         private static void PlayerCreation([FromSource]Player player, string data)
@@ -46,6 +47,8 @@ namespace UE_Server.Entities
             PedCharacter charData = Newtonsoft.Json.JsonConvert.DeserializeObject<PedCharacter>(data);
 
             Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(charData));
+
+            player.Character.Position = FirstSpawnPos[0].Pos;
         }
 
         internal static void BeginPlayerConnecting([FromSource] Player source, string playerName, CallbackDelegate DenyWithReason)

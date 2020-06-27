@@ -83,7 +83,7 @@ namespace CharCreator
         {
             if (menuItem == confirmationItem)
             {
-                TriggerServerEvent("Charcreator_End", JsonConvert.SerializeObject(CharData));
+                TriggerServerEvent("PlayerCreation", JsonConvert.SerializeObject(CharData));
                 ParentMenu.CloseMenu();
                 ParentMenu = null;
             }
