@@ -1,6 +1,6 @@
 ﻿namespace UE_Shared
 {
-    public enum PedHash : uint
+    public enum RDR2PedHash : uint
     {
         AfoWaptownfolk01 = 0x837B740E,
         UmmWapofficial01 = 0x5EDC8972,

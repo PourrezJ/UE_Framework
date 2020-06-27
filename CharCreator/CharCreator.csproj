@@ -34,6 +34,9 @@
     <Reference Include="CitizenFX.Core">
       <HintPath>C:\FiveM\FiveM.app\citizen\clr2\lib\mono\4.5\CitizenFX.Core.dll</HintPath>
     </Reference>
+    <Reference Include="CitizenFX.Core.Client">
+      <HintPath>C:\Users\Flash\AppData\Local\FiveM\FiveM.app\citizen\clr2\lib\mono\4.5\CitizenFX.Core.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalsLibs\Newtonsoft.Json.dll</HintPath>
@@ -48,10 +51,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main.cs" />
+    <Compile Include="Appearance.cs" />
+    <Compile Include="Beard.cs" />
+    <Compile Include="CharCreator.cs" />
+    <Compile Include="Hair.cs" />
+    <Compile Include="HerritanceMenu.cs" />
+    <Compile Include="IdentiteMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MenuAPI\MenuAPI\MenuAPI.csproj">
+      <Project>{cd709b72-0bdb-4c16-bc40-63cbc13b6e49}</Project>
+      <Name>MenuAPI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Client_Extented\Client_Extented.csproj">
       <Project>{503b9c4b-99c0-4004-80bb-352f8106b5d6}</Project>
       <Name>Client_Extented</Name>
@@ -60,6 +72,9 @@
       <Project>{EAA3371D-EFE8-4844-A315-02F5E8EC81FA}</Project>
       <Name>Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config.ini" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

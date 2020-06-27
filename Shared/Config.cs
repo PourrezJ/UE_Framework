@@ -12,7 +12,7 @@ namespace UE_Shared
     {
         private static Dictionary<string, object> _entries { get; set; }
 
-        public static void LoadConfig(string path)
+        public static void LoadConfig(string path = "Config.ini")
         {
             Logger.Info("Loading configuration");
 

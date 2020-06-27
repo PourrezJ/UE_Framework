@@ -1,16 +1,12 @@
 ﻿using CitizenFX.Core;
 using CitizenFX.Core.Native;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace UE_Client
+namespace UE_Client_Extented
 {
-    internal static class Inputbox
+    public static class Inputbox
     {
-        internal static async Task<string> GetUserInput(string defaultText, int maxLen = 22)
+        public static async Task<string> GetUserInput(string defaultText, int maxLen = 22)
         {
             string output = null;
 

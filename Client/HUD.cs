@@ -1,6 +1,6 @@
 ﻿using UE_Shared;
 using System;
-using UE_Client_Extented.Utils;
+using UE_Client_Extented;
 
 namespace UE_Client
 {

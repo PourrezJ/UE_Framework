@@ -1,55 +1,72 @@
 ﻿namespace UE_Shared
 {
-    public class PedCharacter
+    public enum Sex
     {
-        public int Torso;
-        public int TorsoTexture;
+        Male,
+        Girl,
+        Other
+    }
 
-        public int Leg;
-        public int LegTexture;
+    public class Identite
+    {
+        public Sex Gender = Sex.Male;
+        public string LastName = "Doe";
+        public string FirstName = "John";
+        public int Age = 18;
+        public string Nationality = "Americaine";
+    }
 
-        public int Shoes;
-        public int ShoesTexture;
+    public class HeadOverlay
+    {
+        /*
+            0               Blemishes             0 - 23,   255  
+            1               Facial Hair           0 - 28,   255  
+            2               Eyebrows              0 - 33,   255  
+            3               Ageing                0 - 14,   255  
+            4               Makeup                0 - 74,   255  
+            5               Blush                 0 - 6,    255  
+            6               Complexion            0 - 11,   255  
+            7               Sun Damage            0 - 10,   255  
+            8               Lipstick              0 - 9,    255  
+            9               Moles/Freckles        0 - 17,   255  
+            10              Chest Hair            0 - 16,   255  
+            11              Body Blemishes        0 - 11,   255  
+            12              Add Body Blemishes    0 - 1,    255  
+            */
+        public int Index = 255;
+        public float Opacity = 1.0f;
+        public int Color = 0;
+        public int SecondaryColor = 0;
+    }
 
-        public int Accessory;
-        public int AccessoryText;
+    public class HeadBlendData
+    {
+        public byte ShapeFirst;
+        public byte ShapeSecond;
+        public byte ShapeThird;
+        public byte SkinFirst;
+        public byte SkinSecond;
+        public byte SkinThird;
+        public float ShapeMix = 0.5f;
+        public float SkinMix = 0.5f;
+        public float ThirdMix;
+    }
 
-        public int UnderShirt;
-        public int UnderShirtTexture;
+    public class PedCharacter
+    {  
+        public Identite Identite;
+        public HeadBlendData HeadBlendData;
 
-        public int Torso2;
-        public int Torso2Texture;
+        public HeadOverlay[] HeadOverlay;
 
-        public int PropHat;
-        public int PropHatText;
+        public PedCharacter()
+        {
+            Identite = new Identite();
+            HeadBlendData = new HeadBlendData();
 
-        public int PropGlasses;
-        public int PropGlassesTexture;
-
-        public int PropEarrings;
-        public int PropEarringsTexture;
-
-        public int PropWatches;
-        public int PropWatchesTexture;
-
-
-        public int Dad;
-        public int Mum;
-        public float DadMumPercent;
-        public int Skin;
-        public int EyeColor;
-        public int Acne;
-        public int SkinProblem;
-        public int Freckle;
-        public int Wringle;
-        public float WringleOpacity;
-        public int Hair;
-        public int HairColor;
-        public int EyeBrow;
-        public float EyeBrowOpacity;
-        public int Beard;
-        public float BeardOpacity;
-        public int BeardColor;
-
+            HeadOverlay = new HeadOverlay[12];
+            for (int i = 0; i < HeadOverlay.Length; i++)
+                HeadOverlay[i] = new HeadOverlay();
+        }
     }
 }
