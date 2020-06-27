@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Config.ini" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

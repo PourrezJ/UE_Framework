@@ -9,7 +9,7 @@ namespace UE_Server.Businesses
 {
     public class GeneralStore : Business
     {
-        public GeneralStore(string businnessName, Location location, uint blipSprite, int inventoryMax, PedHash pedhash = 0, string owner = null, bool buyable = true, bool onsale = true) : base(businnessName, location, blipSprite, inventoryMax, pedhash, owner, buyable, onsale)
+        public GeneralStore(string businnessName, Location location, uint blipSprite, int inventoryMax, uint pedhash = 0, string owner = null, bool buyable = true, bool onsale = true) : base(businnessName, location, blipSprite, inventoryMax, pedhash, owner, buyable, onsale)
         {
         }
     }

@@ -30,7 +30,7 @@ namespace UE_Server
         public static bool FirstPlayerConnected;
         public static bool ServerStarted;
         public static PlayerList PlayersList;
-
+        public static Platform Platform;
         #endregion
 
         #region C4TOR
@@ -47,6 +47,11 @@ namespace UE_Server
             Logger.Info("Server loading ...");
 
             Config.LoadConfig("Config.ini");
+
+            Platform = Config.Get<Platform>("Platform");
+
+            Logger.Info("Run UE_Framework for " + Platform.ToString() + " platform.");
+
             Database.MongoDB.Init();
 
             API.SetMapName("UE Framework");

@@ -73,9 +73,20 @@ namespace CharCreator
             ParentMenu.AddMenuItem(confirmationItem);
 
             ParentMenu.HeaderTexture = new KeyValuePair<string, string>();
+            ParentMenu.OnItemSelect += OnItemSelect;
 
             MenuController.AddMenu(ParentMenu);
             ParentMenu.OpenMenu();
+        }
+
+        private static void OnItemSelect(Menu menu, MenuItem menuItem, int itemIndex)
+        {
+            if (menuItem == confirmationItem)
+            {
+                TriggerServerEvent("Charcreator_End", JsonConvert.SerializeObject(CharData));
+                ParentMenu.CloseMenu();
+                ParentMenu = null;
+            }
         }
 
         internal static async void ApplyChange()
@@ -113,7 +124,7 @@ namespace CharCreator
         {
             if (ParentMenu != null)
             {
-                //Function.Call(Hash.DISABLE_ALL_CONTROL_ACTIONS, 0);
+                Function.Call(Hash.DISABLE_ALL_CONTROL_ACTIONS, 0);
             }
             if (!devDebug)
             {

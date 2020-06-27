@@ -35,8 +35,7 @@ namespace UE_Server.Businesses
         [BsonIgnore, JsonIgnore]
         protected PedNetwork Ped;
 
-        [BsonRepresentation(BsonType.Int64, AllowOverflow = true)]
-        public PedHash PedHash { get; private set; }
+        public uint PedHash { get; private set; }
 
         public int MaxEmployee { get; set; } = 5;
         public bool CanEmploy = false;
@@ -51,7 +50,7 @@ namespace UE_Server.Businesses
         #endregion
 
         #region Constructor
-        public Business(string businnessName, Location location, uint blipSprite, int inventoryMax, PedHash pedhash = 0, string owner = null, bool buyable = true, bool onsale = true)
+        public Business(string businnessName, Location location, uint blipSprite, int inventoryMax, uint pedhash = 0, string owner = null, bool buyable = true, bool onsale = true)
         {
             BusinnessName = businnessName;
             Location = location;

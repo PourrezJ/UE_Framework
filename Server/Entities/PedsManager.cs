@@ -30,7 +30,7 @@ namespace UE_Server.Entities
         public static NpcSecondaryCallBack NpcSecInteractCallBack { get; set; }
 
 
-        public static PedNetwork CreatePed(PedHash pedHash, Location position)
+        public static PedNetwork CreatePed(uint pedHash, Location position)
         {
             var ped = new PedNetwork()
             {

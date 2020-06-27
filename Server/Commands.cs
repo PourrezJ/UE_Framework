@@ -86,7 +86,7 @@ namespace UE_Server
                 if (player == null)
                     return;
 
-                PedsManager.CreatePed((PedHash)API.GetHashKey("mp_male"), player.GetLocation());
+                PedsManager.CreatePed((uint)API.GetHashKey("mp_male"), player.GetLocation());
             }), false);
         }
     }
